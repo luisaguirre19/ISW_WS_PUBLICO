@@ -2,5 +2,7 @@
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
         ".vscode{,/**}"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/0cd7fa31-4b89-4263-b989-d54bb95af77b/resourceGroups/recursos-isw/providers/Microsoft.Web/sites/coffee-dv",
+    "appService.deploySubpath": "."
 }
