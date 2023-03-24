@@ -46,7 +46,7 @@ try {
         try {
         security.validaSeguridad(request.headers.authorization).then((resp)=>{
             if (resp == 'N' || !resp){
-                return res.status(401).json({ error: 'No autorizado' });        
+                return res.status(401).json({ error: 'No autorizado :D' });        
             }else if(resp == 'T') {
                 return res.status(403).json({ error: 'No autorizado, token expiró' });        
             }      
