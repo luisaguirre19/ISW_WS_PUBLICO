@@ -21,7 +21,7 @@ async function validaSeguridad(token) {
             retorno = decoded.id_login.toString();
           }
           //   }
-        }
+        } 
       });
       return retorno;
     }
