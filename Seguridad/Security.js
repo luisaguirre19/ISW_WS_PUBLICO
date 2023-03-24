@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-
+//Hola mundo
 async function validaSeguridad(token) {
   try {
     let retorno;
