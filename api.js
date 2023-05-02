@@ -97,11 +97,30 @@ try {
         }
     })
 
+    router.route('/cuenta').get((request,res)=>{
+        try {
+            parametros = [{
+                "operacion":'C',
+                "sub_operacion":'S',
+                "sp":"principal_productor"
+            }]
+            dbocategoria.getData(parametros).then(result => {
+                if(result == 1){
+                    res.status(500).send("Revisa la parametrización enviada a la base de datos.");
+                }else{
+                    res.json(result);    
+                }
+            })
+        } catch (error) {
+            res.status(100).send("Revisa la estructura de la parametrización.");
+        }
+    })
+
 } catch (error) {
     res.status(200).send("Revisa la estructura de la parametrización.");
 }
 
-var port = process.env.PORT || 8090;
+var port = process.env.PORT || 8094;
 app.listen(port);
 console.log('api iniciado en el puerto: ' + port);
 //}
