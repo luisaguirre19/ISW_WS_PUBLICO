@@ -21,15 +21,25 @@ try {
 
     //CREAMOS UNA CUENTA DEL CLIENTE
     router.route('/count').post((request,res)=>{
-        let parametros   = request.body
+        //let parametros   = request.body
         try {
+            parametros = [{
+                "operacion":'L',
+                "sub_operacion":'V',
+                "correo":request.body.correo,
+                "pass":request.body.pass,
+                "tipo":'B',
+                "sp":"principal_beneficio"
+            }]
             dbocategoria.getData(parametros).then(result => {
                 if(result == 1){
                     res.status(500).send("Revisa la parametrización enviada a la base de datos.");
                 }else{
                     if(result[0].resp == "Si"){
                         security.creaToken(result[0].usuario, result[0].id_login).then((result)=>{
-                            res.json(result);    
+                          //  res.json(result);    
+                            res.json([{"token":result,"resp":"Si", "id_login":result[0].id_login}]);    
+
                         })
                     }else{
                         res.status(300).send("Verfica los datos ingresados");
@@ -115,6 +125,9 @@ try {
             res.status(100).send("Revisa la estructura de la parametrización.");
         }
     })
+
+  
+    
 
 } catch (error) {
     res.status(200).send("Revisa la estructura de la parametrización.");
